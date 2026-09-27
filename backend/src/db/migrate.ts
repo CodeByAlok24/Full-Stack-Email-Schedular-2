@@ -17,7 +17,7 @@ export async function migrate(): Promise<void> {
       } catch (err) {
         const msg = String((err as Error)?.message ?? err);
         if (/Duplicate column|Duplicate key|Duplicate index|Duplicate entry|Unknown column|Unknown table|Can't DROP/i.test(msg)) {
-          console.log(`[db] skip (already exists): ${stmt.slice(0, 60)}…`);
+          // skip silently
         } else {
           throw err;
         }
